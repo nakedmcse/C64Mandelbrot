@@ -6,12 +6,12 @@
 50 xo=x*(2.47/319)-2 : yo=y*(2.24/199)-1.12 : rem mandelbrot coords
 60 tx=0 : ty=0 : i=0: rem translated coords, iteration
 
-70 if i>50 or ((tx*tx)+(ty*ty))>4 goto 110 : rem while breakout clause
+70 if i>10 or ((tx*tx)+(ty*ty))>4 goto 110 : rem while breakout clause
 80 xt=(tx*tx)-(ty*ty)+xo : rem xtemp
 90 ty=(2*(tx*ty))+yo : tx=xt : i=i+1 : rem next tx,ty, iter
 100 goto 70 : rem end while loop
 
-110 if i<26 then gosub 300 : rem plot point if iter < 26
+110 if i<11 then gosub 300 : rem plot point if iter < 11
 120 next x : next y
 130 goto 130 : rem loop to hold screen
 
