@@ -1,14 +1,16 @@
-/* C64 Mandelbrot C version */
+// C64 Mandelbrot C version
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "C64.h"
+#include "float.h"
+#include "math.h"
 
 void setupScreen() {
     CLRSCR;
     SET_COLORS(C64_COLOR_BLACK,C64_COLOR_BLACK,C64_COLOR_BLUE);
     memset((void *)BASE_HIRES_ADDRESS,0,7999U);  // 0 out screen memory
-    memset((void *)BASE_SCREEN_ADDRESS,96,1024);  // Set black/blue colors
+    memset((void *)BASE_SCREEN_ADDRESS,(C64_COLOR_BLUE << 4)|C64_COLOR_BLACK,1024);  // Set black/blue colors
     SET_HIRES;
 }
 
@@ -22,20 +24,20 @@ void plot(int x, int y) {
 }
 
 int main(void) {
-    long x;
-    long y;
+    int x;
+    int y;
 
     setupScreen();
 
     // Mandelbrot Reduced Iter
     for(y=0; y<200; y++) {
         for(x=0; x<320; x++) {
-            long xo = ((x*247)/320)-200;
-            long yo = ((y*224)/200)-112;
+            float xo = ((itof(x)*2.47)/320)-2.0;
+            float yo = ((itof(y)*2.24)/200)-1.12;
             int i = 0;
-            long tx = 0;
-            long ty = 0;
-            long xtemp = 0;
+            float tx = 0;
+            float ty = 0;
+            float xtemp = 0;
 
             while(i<11 && ((tx*tx)+(ty*ty))<=400) {
                 xtemp = (tx*tx)-(ty*ty)+xo;

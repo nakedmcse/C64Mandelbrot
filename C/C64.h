@@ -1,7 +1,7 @@
-/* C64 Specific Code */
+// C64 Specific Code
 #include<peekpoke.h>
 
-/* Color Macros */
+// Color Macros
 #define C64_COLOR_BLACK  0x00U
 #define C64_COLOR_WHITE  0x01U
 #define C64_COLOR_RED    0x02U
@@ -19,7 +19,7 @@
 #define C64_COLOR_LBLUE  0x0EU
 #define C64_COLOR_LGREY  0x0FU
 
-/* Screen Macros */
+// Screen Macros
 #define BASE_SCREEN_ADDRESS 33792U
 #define BASE_HIRES_ADDRESS  40960U
 
